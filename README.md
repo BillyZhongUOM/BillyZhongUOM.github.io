@@ -25,8 +25,9 @@ git add -A && git commit -m "..." && git push
 Pages rebuilds in 1 to 3 minutes on push to `main`.
 
 ## Editing notes
-- **Add a real photo:** drop a square image at `assets/portrait.jpg` and uncomment the
-  `<img>` line inside the `.portrait` block in `index.html`. The XZ monogram is the fallback.
+- **Photo:** the headshot is `assets/portrait.jpg` (square, ~720px, sourced from Billy's
+  `Billyacademic.jpg`). To change it, replace that file with another square image, then
+  re-run `python3 assets/make_og.py` to refresh the share card.
 - **Update the canonical URL:** if the site moves to a custom domain, change `SITE_URL`
   in the three marked places in `index.html` (canonical, og:url, JSON-LD url).
 - **Add ORCID:** once an ORCID iD exists, add its URL to the `sameAs` array in the
