@@ -6,7 +6,10 @@ site is the anchor; ORCID and a Wikidata item are the next two signals.
 
 Status as of 2026-06-23:
 - Personal site LIVE at https://billyzhonguom.github.io/ (repo BillyZhongUOM.github.io).
-- Billy has NO Wikidata item and NO ORCID of his own.
+- Billy HAS his own ORCID: **0000-0002-3448-6702** (confirmed his: University of Oxford,
+  Department of Population Health from Nov 2023, plus his real papers). Now added to the
+  site `sameAs` and profile card.
+- Billy has NO Wikidata item yet; no Wikidata item uses his ORCID either (checked).
 
 ## Wikidata search result (de-duplication done 2026-06-23)
 The name already maps to other people, which is the core disambiguation problem:
@@ -24,18 +27,13 @@ The name already maps to other people, which is the core disambiguation problem:
   decides. In the near term the live site plus consolidated, cross-linked profiles do most
   of the disambiguation work.
 
-## Step 1 - ORCID (Billy does this; ~5 min)
-Account creation and passwords cannot be done on Billy's behalf.
-1. Register at https://orcid.org/register (email + password).
-2. Name: "Xiaomin Zhong"; published name / also-known-as: "Billy Zhong".
-3. Employment: University of Oxford, Nuffield Department of Population Health (current).
-   Add University of Manchester if appropriate (past).
-4. Education: PhD Health Informatics, University of Manchester; MSc Health Data Science,
-   University of Manchester; BSc, Peking University.
-5. Works: add publications (search by name in the ORCID "Add works" -> Crossref / Scopus
-   importer, and select ONLY his own papers; do not bulk-import namesakes).
-6. Set the record visibility to public.
-Then: add the ORCID URL to the site `sameAs` array and to the Wikidata item (P496).
+## Step 1 - ORCID (DONE: 0000-0002-3448-6702)
+Billy already has an ORCID, and it is already added to the site. Optional tidy-up Billy
+can do on orcid.org when convenient (the record currently lists employment + works but no
+education):
+- Add education: PhD Health Informatics and MSc Health Data Science, University of
+  Manchester; BSc, Peking University.
+- Add also-known-as "Billy Zhong"; keep visibility public.
 
 ## Step 2 - Wikidata item (Billy logs in; Claude drives via Chrome MCP)
 Needs a logged-in Wikimedia account. Create the item, then add statements. Use the
@@ -56,7 +54,7 @@ Statements (each sourced where noted):
 - field of work (P101) -> epidemiology; health data science
 - Google Scholar author ID (P1960) -> rSH7qsgAAAAJ   [strong, verifiable anchor]
 - official website (P856) -> https://billyzhonguom.github.io/
-- ORCID iD (P496) -> [add once registered]
+- ORCID iD (P496) -> 0000-0002-3448-6702
 
 Reference for sourced statements: reference URL
 https://www.ndph.ox.ac.uk/team/xiaomin-zhong , retrieved 2026-06-23.

@@ -68,21 +68,31 @@ def main():
     # One-line positioning.
     d.text(
         (pad, pad + 300),
-        "National electronic health records, for safer hospital care.",
+        "Safer hospital care, from health records.",
         font=sans_sm,
         fill=MUTED,
     )
 
-    # Monogram chip bottom-right.
-    chip = 132
-    cx0 = W - pad - chip
-    cy0 = H - pad - chip
-    d.rounded_rectangle([cx0, cy0, cx0 + chip, cy0 + chip], radius=22, fill=ACCENT)
-    mono = load(SERIF_CANDIDATES, 64)
-    tb = d.textbbox((0, 0), "XZ", font=mono)
-    tw, th = tb[2] - tb[0], tb[3] - tb[1]
-    d.text((cx0 + (chip - tw) / 2 - tb[0], cy0 + (chip - th) / 2 - tb[1]), "XZ",
-           font=mono, fill=(255, 255, 255))
+    # Headshot on the right, vertically centred, with rounded corners.
+    portrait_path = Path(__file__).resolve().parent / "portrait.jpg"
+    if portrait_path.exists():
+        ps = 264
+        portrait = Image.open(portrait_path).convert("RGB").resize((ps, ps))
+        mask = Image.new("L", (ps, ps), 0)
+        ImageDraw.Draw(mask).rounded_rectangle([0, 0, ps, ps], radius=18, fill=255)
+        px = W - pad - ps
+        py = (H - ps) // 2
+        # thin accent frame
+        d.rounded_rectangle([px - 3, py - 3, px + ps + 3, py + ps + 3], radius=21, outline=ACCENT, width=2)
+        img.paste(portrait, (px, py), mask)
+    else:
+        chip = 132
+        cx0, cy0 = W - pad - chip, H - pad - chip
+        d.rounded_rectangle([cx0, cy0, cx0 + chip, cy0 + chip], radius=22, fill=ACCENT)
+        mono = load(SERIF_CANDIDATES, 64)
+        tb = d.textbbox((0, 0), "XZ", font=mono)
+        d.text((cx0 + (chip - (tb[2] - tb[0])) / 2 - tb[0], cy0 + (chip - (tb[3] - tb[1])) / 2 - tb[1]),
+               "XZ", font=mono, fill=(255, 255, 255))
 
     # Footer profile line.
     d.text((pad, H - pad - 14), "scholar.google.com  ·  ndph.ox.ac.uk", font=sans_sm, fill=MUTED)
